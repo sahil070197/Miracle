@@ -42,7 +42,6 @@ public class ReviewDialog
 
         ((TextView)dialog.findViewById(R.id.reviewTitle)).setText("Feedback: "+ teacherName);
         dialog.getWindow().getAttributes().windowAnimations = R.style.CloseDialogTheme;
-
         dialog.findViewById(R.id.submit).setOnClickListener(new View.OnClickListener()
         {
             @Override

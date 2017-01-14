@@ -18,6 +18,7 @@ public class ViewReviews extends AppCompatActivity {
         //Activity to view reviews only for particular teacher
 
         //THIS CLASS IS FOR TEACHER SPECIFIC REVIEWS
+        //Disable Submit button while using dialog box for review reading
         ArrayList<String> feedList=new ArrayList<>();
         feedListView=(ListView) findViewById(R.id.FeedList);
         FeedAdapter feedAdapter= new FeedAdapter(this,R.layout.feed_list_item,feedList);

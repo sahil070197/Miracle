@@ -11,6 +11,13 @@
         android:orderInCategory="100"
         android:title="Upload Notes"
         app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/myReviews"
+        android:orderInCategory="100"
+        android:title="My Review"
+        app:showAsAction="never"/>
+
     <item
         android:id="@+id/liveConference"
         android:orderInCategory="100"
