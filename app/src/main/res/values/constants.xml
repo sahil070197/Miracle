@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="waitTime">2000</integer>
+    <integer name="splashTime">3000</integer>
     <string-array name="Gender">
         <item>Male</item>
         <item>Female</item>
@@ -18,5 +18,10 @@
         <item>Student</item>
         <item>Teacher</item>
         <item>Administrator</item>
+    </string-array>
+
+    <string-array name="Section">
+        <item>Section 1</item>
+        <item>Section 2</item>
     </string-array>
 </resources>

@@ -10,6 +10,6 @@ public class FetchData
 {
 	public void Login(Context context, String UserName, String Password, iResponseCallback callback)
 	{
-
+		//if user exists, non null FAILED OBJECT
 	}
 }

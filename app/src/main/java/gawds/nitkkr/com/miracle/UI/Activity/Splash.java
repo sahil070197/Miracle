@@ -10,7 +10,6 @@ import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterCore;
 
 import gawds.nitkkr.com.miracle.Helper.ActivityHelper;
-import gawds.nitkkr.com.miracle.Home;
 import gawds.nitkkr.com.miracle.Model.AppUserModel;
 import gawds.nitkkr.com.miracle.R;
 import com.crashlytics.android.Crashlytics;
@@ -46,14 +45,22 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run()
             {
-                Intent intent;
+                Intent intent = null;
                 if(!AppUserModel.getMainUser().isLoggedIn())
                     intent = new Intent(Splash.this,Login.class);
-                else intent = new Intent(Splash.this, Home.class);
+                else
+                {
+                    switch (AppUserModel.getMainUser().getUserType())
+                    {
+                        case Student: intent=new Intent(Splash.this, StudentHome.class);break;
+                        case Admin: intent=new Intent(Splash.this, AdminHome.class);break;
+                        case Teacher: intent=new Intent(Splash.this, TeacherHome.class);break;
+                    }
+                }
                 startActivity(intent);
                 ActivityHelper.setExitAnimation(Splash.this);
-                Splash.this.finish();
+                finish();
             }
-        },getResources().getInteger(R.integer.waitTime));
+        },getResources().getInteger(R.integer.splashTime));
     }
 }

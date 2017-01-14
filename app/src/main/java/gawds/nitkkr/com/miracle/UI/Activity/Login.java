@@ -11,7 +11,7 @@ import gawds.nitkkr.com.miracle.API.FetchData;
 import gawds.nitkkr.com.miracle.API.ResponseAdapter;
 import gawds.nitkkr.com.miracle.Helper.ActionBarSimple;
 import gawds.nitkkr.com.miracle.Helper.ActivityHelper;
-import gawds.nitkkr.com.miracle.Home;
+import gawds.nitkkr.com.miracle.Model.AppUserModel;
 import gawds.nitkkr.com.miracle.R;
 
 public class Login extends AppCompatActivity
@@ -36,7 +36,10 @@ public class Login extends AppCompatActivity
         @Override
         public void onClick(View view)
         {
-
+            Intent intent=new Intent(Login.this,SignUp.class);
+            startActivity(intent);
+            ActivityHelper.setExitAnimation(Login.this);
+            finish();
         }
     };
 
@@ -74,7 +77,13 @@ public class Login extends AppCompatActivity
                 public void onSuccess(Object object)
                 {
                     Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(Login.this,Home.class);
+                    Intent intent = null;
+                    switch (AppUserModel.getMainUser().getUserType())
+                    {
+                        case Student: intent=new Intent(Login.this, StudentHome.class);break;
+                        case Admin: intent=new Intent(Login.this, AdminHome.class);break;
+                        case Teacher: intent=new Intent(Login.this, TeacherHome.class);break;
+                    }
                     startActivity(intent);
                     ActivityHelper.setExitAnimation(Login.this);
                     finish();

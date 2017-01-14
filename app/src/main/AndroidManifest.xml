@@ -29,7 +29,15 @@
             android:label="Login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Home"
+        <activity android:name=".UI.Activity.StudentHome"
+                  android:label="Home"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".UI.Activity.AdminHome"
+                  android:label="Home"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".UI.Activity.TeacherHome"
                   android:label="Home"
                   android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.NoActionBar"/>

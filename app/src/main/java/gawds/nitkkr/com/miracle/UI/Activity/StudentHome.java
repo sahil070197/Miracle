@@ -1,15 +1,17 @@
-package gawds.nitkkr.com.miracle;
+package gawds.nitkkr.com.miracle.UI.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Home extends AppCompatActivity
+import gawds.nitkkr.com.miracle.R;
+
+public class StudentHome extends AppCompatActivity
 {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_home);
+		setContentView(R.layout.activity_student_home);
 	}
 }
