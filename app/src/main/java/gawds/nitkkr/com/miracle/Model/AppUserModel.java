@@ -24,11 +24,10 @@ public class AppUserModel extends UserModel implements Serializable
 	}
 
 	private static AppUserModel MainUser;
-	private boolean isLogin = false;
 
 	public boolean isLoggedIn()
 	{
-		return isLogin;
+		return !getName().isEmpty();
 	}
 
 	public void saveUser()
@@ -45,7 +44,6 @@ public class AppUserModel extends UserModel implements Serializable
 		editor.putString("Branch", getBranch());
 		editor.putString("Roll",getRollNumber());
 		editor.putInt("UserType",getUserType().Value());
-		editor.putBoolean("Login", isLoggedIn());
 		editor.apply();
 	}
 
@@ -64,5 +62,13 @@ public class AppUserModel extends UserModel implements Serializable
 		setRollNumber(preferences.getString("Roll",""));
 		setUserType(UserType.getUserType(preferences.getInt("UserType",1)));
 		return this;
+	}
+
+	public void logout()
+	{
+		SharedPreferences.Editor editor = Miracle.getInstance().getApplicationContext().getSharedPreferences("User_Data", Context.MODE_PRIVATE).edit();
+		editor.clear();
+		editor.apply();
+		loadUser();
 	}
 }

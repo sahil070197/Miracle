@@ -2,6 +2,7 @@ package gawds.nitkkr.com.miracle.API;
 
 import android.content.Context;
 
+import gawds.nitkkr.com.miracle.Model.AppUserModel;
 import gawds.nitkkr.com.miracle.Model.UserModel;
 
 /**
@@ -18,6 +19,7 @@ public class FetchData
 	}
 	public void SignUp(Context context, UserModel model, iResponseCallback callback)
 	{
+		AppUserModel.setMainUser((AppUserModel)model);
 		if(callback!=null)
 			callback.onSuccess(null);
 	}

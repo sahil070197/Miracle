@@ -9,6 +9,11 @@
              android:id="@+id/signupbar"
              android:layout_width="match_parent" android:layout_height="?actionBarSize"/>
 
+    <ScrollView
+        android:layout_below="@id/signupbar" android:layout_above="@+id/Register"
+        android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,18 +21,36 @@
         android:orientation="vertical"
         android:weightSum="100"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="@dimen/dgts__margin_left"
-        android:layout_below="@id/signupbar">
+        android:layout_marginStart="@dimen/dgts__margin_left"
+        android:layout_marginEnd="@dimen/dgts__margin_right">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="@dimen/textFieldHeight"
             android:hint="Name"
             android:id="@+id/name"/>
         <EditText
+            android:id="@+id/Password"
+            android:inputType="textPassword" android:hint="Password"
+            android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <!--<EditText
+            android:inputType="number"
+            android:digits="1234567890"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textFieldHeight"
             android:hint="Mobile"
-            android:id="@+id/mobile"/>
+            android:id="@+id/mobile"/>-->
+
+        <com.digits.sdk.android.DigitsAuthButton
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/auth_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/Number" android:text="1234" android:textSize="20sp"
+            android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="@dimen/textFieldHeight"
@@ -39,6 +62,13 @@
             android:hint="Gender"
             android:entries="@array/Gender"
             android:id="@+id/gender"/>
+        <EditText
+            android:inputType="number"
+            android:digits="12345567890"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textFieldHeight"
+            android:hint="Roll Number/ Employee ID"
+            android:id="@+id/rollNumber"/>
     </LinearLayout>
     <Spinner
         android:layout_width="match_parent"
@@ -48,15 +78,16 @@
         android:layout_marginTop="5dp"
         android:layout_height="@dimen/textFieldHeight"
         android:layout_below="@+id/Administrator"
-        android:layout_alignStart="@+id/signupbar"
-        android:layout_marginLeft="@dimen/dgts__margin_left"/>
+        android:layout_alignStart="@+id/Administrator"
+        android:layout_marginEnd="@dimen/dgts__margin_right"/>
     <LinearLayout
         android:orientation="vertical"
         android:id="@+id/Student"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/signUpType"
-        android:layout_marginLeft="@dimen/dgts__margin_left"
+        android:layout_marginStart="@dimen/dgts__margin_left"
+        android:layout_marginEnd="@dimen/dgts__margin_right"
         >
         <Spinner
             android:layout_width="match_parent"
@@ -70,17 +101,15 @@
             android:hint="Branch"
             android:entries="@array/Branch"
             android:id="@+id/branch"/>
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="@dimen/textFieldHeight"
-            android:hint="Section"
+            android:hint="Branch"
+            android:entries="@array/Section"
             android:id="@+id/section"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/textFieldHeight"
-            android:hint="Roll Number"
-            android:id="@+id/rollNumber"/>
     </LinearLayout>
+    </RelativeLayout>
+    </ScrollView>
     <Button
         android:id="@+id/Register"
         android:layout_width="match_parent"

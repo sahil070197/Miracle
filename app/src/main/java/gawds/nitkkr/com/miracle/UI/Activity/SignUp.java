@@ -4,41 +4,51 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.digits.sdk.android.AuthCallback;
+import com.digits.sdk.android.DigitsAuthButton;
+import com.digits.sdk.android.DigitsException;
+import com.digits.sdk.android.DigitsSession;
 
 import gawds.nitkkr.com.miracle.API.FetchData;
 import gawds.nitkkr.com.miracle.API.ResponseAdapter;
 import gawds.nitkkr.com.miracle.Helper.ActivityHelper;
 import gawds.nitkkr.com.miracle.Model.AppUserModel;
+import gawds.nitkkr.com.miracle.Model.UserModel;
+import gawds.nitkkr.com.miracle.Model.UserType;
 import gawds.nitkkr.com.miracle.R;
 
-public class SignUp extends AppCompatActivity  {
-    LinearLayout studentLayout;
+public class SignUp extends AppCompatActivity
+{
+    private UserModel userModel = new UserModel();
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        studentLayout=(LinearLayout) findViewById(R.id.Student);
         final Spinner spinner=(Spinner) findViewById(R.id.signUpType);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                int pos=spinner.getSelectedItemPosition();
-                if(pos!=0)
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                if(spinner.getSelectedItemPosition()!=0)
                 {
-                    studentLayout.setVisibility(View.GONE);
+                    findViewById(R.id.Student).setVisibility(View.GONE);
                 }
                 else
                 {
-                    studentLayout.setVisibility(View.VISIBLE);
+                    findViewById(R.id.Student).setVisibility(View.VISIBLE);
                 }
             }
 
@@ -53,13 +63,21 @@ public class SignUp extends AppCompatActivity  {
             @Override
             public void onClick(View view)
             {
+                pickupDetails();
+
+                if(userModel.getMobileNumber().isEmpty())
+                {
+                    Toast.makeText(SignUp.this,"Verify Mobile Number",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 final ProgressDialog dialog= new ProgressDialog(SignUp.this);
                 dialog.setIndeterminate(true);
                 dialog.setCancelable(false);
                 dialog.setMessage("Signing Up");
                 dialog.show();
 
-                new FetchData().SignUp(SignUp.this,null,new ResponseAdapter()
+                new FetchData().SignUp(SignUp.this,userModel,new ResponseAdapter()
                 {
                     @Override
                     public void onFailed(Object object)
@@ -93,5 +111,40 @@ public class SignUp extends AppCompatActivity  {
                 });
             }
         });
+
+        DigitsAuthButton digitsButton = (DigitsAuthButton) findViewById(R.id.auth_button);
+        digitsButton.setCallback(new AuthCallback()
+        {
+            @Override
+            public void success(DigitsSession session, String phoneNumber)
+            {
+                findViewById(R.id.auth_button).setVisibility(View.GONE);
+                findViewById(R.id.Number).setVisibility(View.VISIBLE);
+                (( TextView)findViewById(R.id.Number)).setText(phoneNumber);
+                userModel.setMobileNumber(phoneNumber);
+                Toast.makeText(SignUp.this,"Mobile Verification Successful",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void failure(DigitsException exception)
+            {
+                userModel.setMobileNumber("");
+                Toast.makeText(SignUp.this,"Mobile Verification Failed",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+    private void pickupDetails()
+    {
+        userModel.setName((( EditText)findViewById(R.id.name)).getText().toString());
+        userModel.setPassword(((EditText)findViewById(R.id.Password)).getEditableText().toString());
+        userModel.setEmail(((EditText)findViewById(R.id.email)).getText().toString());
+        userModel.setGender(((Spinner)findViewById(R.id.gender)).getSelectedItem().toString());
+        userModel.setRollNumber(((EditText)findViewById(R.id.rollNumber)).getText().toString());
+        userModel.setUserType(UserType.getUserType(((Spinner)findViewById(R.id.signUpType)).getSelectedItemPosition()));
+        userModel.setYear(((Spinner)findViewById(R.id.year)).getSelectedItem().toString());
+        userModel.setBranch(((Spinner)findViewById(R.id.branch)).getSelectedItem().toString());
+        userModel.setSection(((Spinner)findViewById(R.id.section)).getSelectedItem().toString());
+    }
+
 }

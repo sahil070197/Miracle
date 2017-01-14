@@ -65,7 +65,11 @@ public class Login extends AppCompatActivity
                 Toast.makeText(Login.this,"Password Cannot Be Empty",Toast.LENGTH_SHORT).show();
                 return;
             }
-
+            if(Password.length()<8)
+            {
+                Toast.makeText(Login.this,"Minimum 8 Characters",Toast.LENGTH_SHORT).show();
+                return;
+            }
             final ProgressDialog dialog= new ProgressDialog(Login.this);
             dialog.setIndeterminate(true);
             dialog.setCancelable(false);

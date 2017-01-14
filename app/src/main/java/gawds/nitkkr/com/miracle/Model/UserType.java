@@ -8,9 +8,9 @@ import java.io.Serializable;
 
 public enum UserType implements Serializable
 {
-	Student(1),
-	Teacher(2),
-	Admin(3);
+	Student(0),
+	Teacher(1),
+	Admin(2);
 
 	private int Value;
 
@@ -20,8 +20,8 @@ public enum UserType implements Serializable
 	{
 		switch (Value)
 		{
-			case 2: return Teacher;
-			case 3: return Admin;
+			case 1: return Teacher;
+			case 2: return Admin;
 			default:return Student;
 		}
 	}

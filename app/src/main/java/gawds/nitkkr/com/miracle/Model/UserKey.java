@@ -42,4 +42,16 @@ public class UserKey implements Serializable
 	private String Name = "";
 	private String UserID = "";
 
+	public String getPassword()
+	{
+		return Password;
+	}
+
+	public void setPassword(String password)
+	{
+		Password = password;
+	}
+
+	private String Password = "";
+
 }
