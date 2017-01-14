@@ -2,8 +2,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/takeAttendance"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Take Attendance"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/uploadNotes"
+        android:orderInCategory="100"
+        android:title="Upload Notes"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/myReviews"
+        android:orderInCategory="100"
+        android:title="My Review"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/liveConference"
+        android:orderInCategory="100"
+        android:title="Live Shoot"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/uploadAssignment"
+        android:orderInCategory="100"
+        android:title="Upload Assignments"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/eventCreate"
+        android:orderInCategory="100"
+        android:title="Create Event"
+        app:showAsAction="never"/>
+
+
+
+
 </menu>

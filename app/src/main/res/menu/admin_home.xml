@@ -2,8 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/viewFeedback"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="View Feedback"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/createEvent"
+        android:orderInCategory="100"
+        android:title="Create Event"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/events"
+        android:orderInCategory="100"
+        android:title="View Events"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/teacherDetails"
+        android:orderInCategory="100"
+        android:title="Teacher Details"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/viewSchedule"
+        android:orderInCategory="100"
+        android:title="View Schedule"
+        app:showAsAction="never"/>
+
+
 </menu>
