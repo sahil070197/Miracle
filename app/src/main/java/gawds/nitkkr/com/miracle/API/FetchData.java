@@ -2,6 +2,7 @@ package gawds.nitkkr.com.miracle.API;
 
 
 import gawds.nitkkr.com.miracle.Model.AppUserModel;
+import gawds.nitkkr.com.miracle.Model.AttendanceModel;
 import gawds.nitkkr.com.miracle.Model.UserModel;
 
 /**
@@ -40,7 +41,7 @@ public class FetchData
 	public void getAttendance(String SubjectID, ResponseCallback callback)
 	{
 		if(callback!=null)
-			callback.responseSwitch(ResponseStatus.Success,null);
+			callback.responseSwitch(ResponseStatus.Success,new AttendanceModel());
 	}
 
 	public void getNotes(String SubjectID, ResponseCallback callback)

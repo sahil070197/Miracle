@@ -5,4 +5,13 @@
     <color name="colorAccent">#FF4081</color>
     <color name="TextColor">#ffffff</color>
     <color name="Transparent">#00ffffff</color>
+
+
+    <color name="a">#03A9F4</color>
+    <color name="b">#8BC34A</color>
+    <color name="c">#f44336</color>
+    <color name="d">#FFC107</color>
+    <color name="e">#61a9a9a9</color>
+    <color name="black">#000000</color>
+    <color name="back">#d4d4d4</color>
 </resources>
