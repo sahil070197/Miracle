@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="waitTime">2000</integer>
+    <string-array name="Gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="Year">
+        <item>2nd Year</item>
+    </string-array>
+
+    <string-array name="Branch">
+        <item>IT</item>
+    </string-array>
+
+    <string-array name="UserType">
+        <item>Student</item>
+        <item>Teacher</item>
+        <item>Administrator</item>
+    </string-array>
 </resources>
