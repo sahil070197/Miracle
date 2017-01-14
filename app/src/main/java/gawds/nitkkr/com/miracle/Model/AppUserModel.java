@@ -15,6 +15,11 @@ public class AppUserModel extends UserModel implements Serializable
 {
 	private boolean isLogin = false;
 
+	public boolean isLogin()
+	{
+		return isLogin;
+	}
+
 	public void saveUser()
 	{
 		SharedPreferences.Editor editor = Miracle.getInstance().getSharedPreferences("AppUser", Context.MODE_PRIVATE).edit();
@@ -28,6 +33,24 @@ public class AppUserModel extends UserModel implements Serializable
 		editor.putString("Section",getSection());
 		editor.putString("Branch", getBranch());
 		editor.putString("Roll",getRollNumber());
-		//editor.putString("UserType",getUserType());
+		editor.putInt("UserType",getUserType().Value());
+		editor.putBoolean("Login",isLogin());
+		editor.apply();
+	}
+
+	public void loadUser()
+	{
+		SharedPreferences preferences=Miracle.getInstance().getApplicationContext().getSharedPreferences("AppUser",Context.MODE_PRIVATE);
+		setToken(preferences.getString("Token",""));
+		setName(preferences.getString("Name",""));
+		setUserID(preferences.getString("UserID",""));
+		setYear(preferences.getString("Year",""));
+		setGender(preferences.getString("Gender","Male"));
+		setEmail(preferences.getString("Email",""));
+		setMobileNumber(preferences.getString("Mobile",""));
+		setSection(preferences.getString("Section",""));
+		setBranch(preferences.getString("Branch",""));
+		setRollNumber(preferences.getString("Roll",""));
+		setUserType(UserType.getUserType(preferences.getInt("UserType",1)));
 	}
 }

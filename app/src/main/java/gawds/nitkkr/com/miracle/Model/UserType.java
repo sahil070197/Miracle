@@ -8,7 +8,26 @@ import java.io.Serializable;
 
 public enum UserType implements Serializable
 {
-	Student,
-	Teacher,
-	Admin
+	Student(1),
+	Teacher(2),
+	Admin(3);
+
+	private int Value;
+
+	public int Value(){return Value;}
+
+	public static UserType getUserType(int Value)
+	{
+		switch (Value)
+		{
+			case 2: return Teacher;
+			case 3: return Admin;
+			default:return Student;
+		}
+	}
+
+	UserType(int value)
+	{
+		this.Value = value;
+	}
 }
