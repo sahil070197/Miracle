@@ -1,5 +1,7 @@
 package gawds.nitkkr.com.miracle.UI.Activity;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -27,5 +29,13 @@ public class Splash extends AppCompatActivity {
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Crashlytics(), new TwitterCore(authConfig), new Digits.Builder().build());
         setContentView(R.layout.activity_splash);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent loginIntent=new Intent(Splash.this,Login.class);
+                startActivity(loginIntent);
+                Splash.this.finish();
+            }
+        },getResources().getInteger(R.integer.waitTime));
     }
 }
