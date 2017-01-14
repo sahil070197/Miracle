@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="6dp" android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:text="Hello!"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:id="@+id/teacherName"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="50dp"
+        android:layout_marginBottom="5dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="22sp"
+        android:hint="Title"
+        android:id="@+id/reviewTitle" />
+    <ScrollView
+        android:layout_width="match_parent" android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="4"
+            android:maxLines="10"
+            android:hint="Reviews here please!"
+            android:id="@+id/review"
+            android:textSize="20dp"/>
+    </ScrollView>
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="50dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/TextColor"
+        android:text="Submit"
+        android:textSize="20dp"
+        android:id="@+id/submit" />
+</LinearLayout>
