@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="6dp"
-    android:paddingRight="6dp"
-    android:paddingTop="6dp"
     tools:context="gawds.nitkkr.com.miracle.UI.Activity.TakeAttendance">
+    <include layout="@layout/actionbar_back"
+        android:id="@+id/attendanceBar"
+        android:layout_width="match_parent" android:layout_height="?actionBarSize"/>
 <ListView
+    android:layout_below="@id/attendanceBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/attendanceList"></ListView>

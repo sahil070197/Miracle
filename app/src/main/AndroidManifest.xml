@@ -52,9 +52,16 @@
             android:name=".UI.Activity.SubjectDetails"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UI.Activity.TakeAttendance" />
-        <activity android:name=".UI.Activity.ViewReviews" />
-        <activity android:name=".UI.Activity.CreateEvent"></activity>
+        <activity android:name=".UI.Activity.TakeAttendance"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            </activity>
+        <activity android:name=".UI.Activity.ViewReviews"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".UI.Activity.CreateEvent"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
