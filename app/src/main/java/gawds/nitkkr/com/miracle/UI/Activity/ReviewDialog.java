@@ -55,7 +55,7 @@ public class ReviewDialog extends Dialog implements View.OnClickListener {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String title=header.getText().toString();
                         String reviewText=review.getText().toString();
-                        //send these reviews
+                        //send these reviews and dismiss
                     }
                 })
                 .show();
