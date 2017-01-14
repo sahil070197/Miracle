@@ -4,11 +4,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +17,8 @@ import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
 
 import gawds.nitkkr.com.miracle.API.FetchData;
-import gawds.nitkkr.com.miracle.API.ResponseAdapter;
+import gawds.nitkkr.com.miracle.API.ResponseCallback;
+import gawds.nitkkr.com.miracle.API.ResponseStatus;
 import gawds.nitkkr.com.miracle.Helper.ActivityHelper;
 import gawds.nitkkr.com.miracle.Model.AppUserModel;
 import gawds.nitkkr.com.miracle.Model.UserModel;
@@ -77,19 +76,17 @@ public class SignUp extends AppCompatActivity
                 dialog.setMessage("Signing Up");
                 dialog.show();
 
-                new FetchData().SignUp(SignUp.this,userModel,new ResponseAdapter()
+                new FetchData().SignUp(userModel,new ResponseCallback()
                 {
                     @Override
                     public void onFailed(Object object)
                     {
-                        onResponse(object);
                         Toast.makeText(SignUp.this,"Sign Up Failed",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onSuccess(Object object)
                     {
-                        onResponse(object);
                         Toast.makeText(SignUp.this,"Sign Up Successful",Toast.LENGTH_SHORT).show();
                         Intent intent = null;
                         switch (AppUserModel.getMainUser().getUserType())
@@ -104,7 +101,7 @@ public class SignUp extends AppCompatActivity
                     }
 
                     @Override
-                    public void onResponse(Object object)
+                    public void onResponse(ResponseStatus responseStatus, Object object)
                     {
                         dialog.dismiss();
                     }

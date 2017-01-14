@@ -10,7 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import gawds.nitkkr.com.miracle.API.FetchData;
-import gawds.nitkkr.com.miracle.API.ResponseAdapter;
+import gawds.nitkkr.com.miracle.API.ResponseCallback;
+import gawds.nitkkr.com.miracle.API.ResponseStatus;
 import gawds.nitkkr.com.miracle.Helper.ActionBarSimple;
 import gawds.nitkkr.com.miracle.Helper.ActivityHelper;
 import gawds.nitkkr.com.miracle.Model.AppUserModel;
@@ -70,19 +71,18 @@ public class Login extends AppCompatActivity
                 Toast.makeText(Login.this,"Minimum 8 Characters",Toast.LENGTH_SHORT).show();
                 return;
             }
+
             final ProgressDialog dialog= new ProgressDialog(Login.this);
             dialog.setIndeterminate(true);
             dialog.setCancelable(false);
             dialog.setMessage("Logging In");
             dialog.show();
 
-            new FetchData().Login(Login.this,UserName,Password,new ResponseAdapter()
+            new FetchData().Login(UserName,Password,new ResponseCallback()
             {
                 @Override
                 public void onFailed(Object object)
                 {
-                    onResponse(object);
-
                     if(object==null)
                         super.onFailed(object);
                     else
@@ -94,7 +94,6 @@ public class Login extends AppCompatActivity
                 @Override
                 public void onSuccess(Object object)
                 {
-                    onResponse(object);
                     Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                     Intent intent = null;
                     switch (AppUserModel.getMainUser().getUserType())
@@ -109,7 +108,7 @@ public class Login extends AppCompatActivity
                 }
 
                 @Override
-                public void onResponse(Object object)
+                public void onResponse(ResponseStatus responseStatus, Object object)
                 {
                     dialog.dismiss();
                 }

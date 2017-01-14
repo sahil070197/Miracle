@@ -65,11 +65,41 @@ public class ReviewDialog
                 if(callback!=null)
                     callback.onCallback();
 
-                Dismiss();
+                dialog.dismiss();
             }
         });
+    }
+
+    public void viewAsAdmin()
+    {
+        dialog.findViewById(R.id.reviewTitle).setEnabled(false);
+        dialog.findViewById(R.id.review).setEnabled(false);
+        ((Button)dialog.findViewById(R.id.submit)).setText("OK");
+        dialog.findViewById(R.id.submit).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    public void setFeedbackTitle(String title)
+    {
+        ((TextView)dialog.findViewById(R.id.reviewTitle)).setText(title);
+    }
+
+    public void setFeedbackReview(String review)
+    {
+        ((TextView)dialog.findViewById(R.id.review)).setText(review);
+    }
+
+    public void show()
+    {
         dialog.show();
     }
+
     public void Dismiss()
     {
         dialog.dismiss();
