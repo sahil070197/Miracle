@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import java.io.Serializable;
 
-import gawds.nitkkr.com.miracle.Miracle;
+import gawds.nitkkr.com.miracle.Src.Miracle;
 
 /**
  * Created by Home Laptop on 14-Jan-17.

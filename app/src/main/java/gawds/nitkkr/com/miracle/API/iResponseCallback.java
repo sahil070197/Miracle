@@ -11,4 +11,5 @@ public interface iResponseCallback
 	void onTimeOut(Object object);
 	void onServerError(Object object);
 	void onNoNetwork(Object object);
+	void onResponse(Object object);
 }

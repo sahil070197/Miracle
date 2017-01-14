@@ -1,6 +1,8 @@
 package gawds.nitkkr.com.miracle.UI.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,8 @@ import gawds.nitkkr.com.miracle.R;
 
 public class Login extends AppCompatActivity
 {
+    private boolean Exit = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -50,6 +54,7 @@ public class Login extends AppCompatActivity
         {
             String UserName = (( TextView)findViewById(R.id.UserName)).getText().toString().trim();
             String  Password = ((TextView)findViewById(R.id.Password)).getEditableText().toString().trim();
+
             if(UserName.isEmpty())
             {
                 Toast.makeText(Login.this,"User Name Cannot Be Empty",Toast.LENGTH_SHORT).show();
@@ -60,11 +65,20 @@ public class Login extends AppCompatActivity
                 Toast.makeText(Login.this,"Password Cannot Be Empty",Toast.LENGTH_SHORT).show();
                 return;
             }
+
+            final ProgressDialog dialog= new ProgressDialog(Login.this);
+            dialog.setIndeterminate(true);
+            dialog.setCancelable(false);
+            dialog.setMessage("Logging In");
+            dialog.show();
+
             new FetchData().Login(Login.this,UserName,Password,new ResponseAdapter()
             {
                 @Override
                 public void onFailed(Object object)
                 {
+                    onResponse(object);
+
                     if(object==null)
                         super.onFailed(object);
                     else
@@ -76,6 +90,7 @@ public class Login extends AppCompatActivity
                 @Override
                 public void onSuccess(Object object)
                 {
+                    onResponse(object);
                     Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                     Intent intent = null;
                     switch (AppUserModel.getMainUser().getUserType())
@@ -88,8 +103,34 @@ public class Login extends AppCompatActivity
                     ActivityHelper.setExitAnimation(Login.this);
                     finish();
                 }
+
+                @Override
+                public void onResponse(Object object)
+                {
+                    dialog.dismiss();
+                }
             });
         }
     };
 
+    @Override
+    public void onBackPressed()
+    {
+        if(Exit)
+            finish();
+        else if(isTaskRoot())
+        {
+            Exit=true;
+            Toast.makeText(this,"Press Back Again T Exit",Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    Exit=false;
+                }
+            },getResources().getInteger(R.integer.exitTime));
+        }
+        else super.onBackPressed();
+    }
 }

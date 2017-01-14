@@ -1,4 +1,4 @@
-package gawds.nitkkr.com.miracle;
+package gawds.nitkkr.com.miracle.Src;
 
 import android.app.Application;
 

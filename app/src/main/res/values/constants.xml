@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="splashTime">3000</integer>
+    <integer name="exitTime">2000</integer>
     <string-array name="Gender">
         <item>Male</item>
         <item>Female</item>

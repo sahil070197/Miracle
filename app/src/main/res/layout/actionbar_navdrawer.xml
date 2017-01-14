@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@color/colorPrimary"
+                android:layout_height="?actionBarSize">
+
+
+    <RelativeLayout
+        android:id="@+id/main_bar"
+        android:layout_centerVertical="true" android:layout_centerHorizontal="true"
+        android:layout_width="match_parent" android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:id="@+id/actionbar_navButton"
+            app:srcCompat="@drawable/icon_navigator"
+            android:tint="@color/TextColor"
+            android:background="@color/Transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/actionbar_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:padding="10dp"
+            android:visibility="invisible"
+            android:tint="@color/TextColor"
+            app:srcCompat="@drawable/icon_navigator" />
+
+        <TextView
+            android:id="@+id/actionbar_title"
+            android:padding="10dp"
+            android:textColor="@color/TextColor"
+            android:text="Activity Label" android:textSize="20sp"
+            android:textAlignment="center" android:layout_centerVertical="true"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/actionbar_navButton"
+            android:layout_toStartOf="@id/actionbar_search"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
