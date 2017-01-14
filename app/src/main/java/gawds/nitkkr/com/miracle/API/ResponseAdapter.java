@@ -10,34 +10,36 @@ import gawds.nitkkr.com.miracle.Miracle;
 
 public class ResponseAdapter implements iResponseCallback
 {
+	private int Duration = Toast.LENGTH_SHORT;
+
 	@Override
 	public void onSuccess(Object object)
 	{
-		Toast.makeText(Miracle.getInstance().getApplicationContext(),"Success",Toast.LENGTH_SHORT).show();
+		Toast.makeText(Miracle.getInstance().getApplicationContext(),"Success",Duration).show();
 	}
 
 	@Override
 	public void onFailed(Object object)
 	{
-		Toast.makeText(Miracle.getInstance().getApplicationContext(),"Failed, Please Try Again",Toast.LENGTH_SHORT).show();
+		Toast.makeText(Miracle.getInstance().getApplicationContext(),"Failed, Please Try Again",Duration).show();
 	}
 
 	@Override
 	public void onTimeOut(Object object)
 	{
-		Toast.makeText(Miracle.getInstance().getApplicationContext(),"Connection Timed Out",Toast.LENGTH_SHORT).show();
+		Toast.makeText(Miracle.getInstance().getApplicationContext(),"Connection Timed Out",Duration).show();
 	}
 
 	@Override
 	public void onServerError(Object object)
 	{
-		Toast.makeText(Miracle.getInstance().getApplicationContext(),"Server Error",Toast.LENGTH_SHORT).show();
+		Toast.makeText(Miracle.getInstance().getApplicationContext(),"Server Error",Duration).show();
 	}
 
 	@Override
 	public void onNoNetwork(Object object)
 	{
-		Toast.makeText(Miracle.getInstance().getApplicationContext(),"No Network Connection",Toast.LENGTH_SHORT).show();
+		Toast.makeText(Miracle.getInstance().getApplicationContext(),"No Network Connection",Duration).show();
 	}
 
 	public void onResponse(ResponseStatus responseStatus, Object object)
@@ -52,4 +54,8 @@ public class ResponseAdapter implements iResponseCallback
 		}
 	}
 
+	public void setDuration(int duration)
+	{
+		this.Duration=duration;
+	}
 }
