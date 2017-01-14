@@ -3,6 +3,8 @@ package gawds.nitkkr.com.miracle.UI.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import gawds.nitkkr.com.miracle.R;
+
 public class Login extends AppCompatActivity {
 
     @Override
