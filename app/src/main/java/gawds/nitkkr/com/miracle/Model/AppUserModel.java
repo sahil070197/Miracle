@@ -13,9 +13,20 @@ import gawds.nitkkr.com.miracle.Miracle;
 
 public class AppUserModel extends UserModel implements Serializable
 {
+	public static AppUserModel getMainUser()
+	{
+		return MainUser;
+	}
+
+	public static void setMainUser(AppUserModel mainUser)
+	{
+		MainUser = mainUser;
+	}
+
+	private static AppUserModel MainUser;
 	private boolean isLogin = false;
 
-	public boolean isLogin()
+	public boolean isLoggedIn()
 	{
 		return isLogin;
 	}
@@ -34,11 +45,11 @@ public class AppUserModel extends UserModel implements Serializable
 		editor.putString("Branch", getBranch());
 		editor.putString("Roll",getRollNumber());
 		editor.putInt("UserType",getUserType().Value());
-		editor.putBoolean("Login",isLogin());
+		editor.putBoolean("Login", isLoggedIn());
 		editor.apply();
 	}
 
-	public void loadUser()
+	public AppUserModel loadUser()
 	{
 		SharedPreferences preferences=Miracle.getInstance().getApplicationContext().getSharedPreferences("AppUser",Context.MODE_PRIVATE);
 		setToken(preferences.getString("Token",""));
@@ -52,5 +63,6 @@ public class AppUserModel extends UserModel implements Serializable
 		setBranch(preferences.getString("Branch",""));
 		setRollNumber(preferences.getString("Roll",""));
 		setUserType(UserType.getUserType(preferences.getInt("UserType",1)));
+		return this;
 	}
 }

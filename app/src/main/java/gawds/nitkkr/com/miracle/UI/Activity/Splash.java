@@ -9,8 +9,8 @@ import com.digits.sdk.android.Digits;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterCore;
 
-import gawds.nitkkr.com.miracle.API.ResponseAdapter;
-import gawds.nitkkr.com.miracle.Miracle;
+import gawds.nitkkr.com.miracle.Helper.ActivityHelper;
+import gawds.nitkkr.com.miracle.Model.AppUserModel;
 import gawds.nitkkr.com.miracle.R;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
@@ -29,13 +29,38 @@ public class Splash extends AppCompatActivity {
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Crashlytics(), new TwitterCore(authConfig), new Digits.Builder().build());
         setContentView(R.layout.activity_splash);
+
+        if(!ActivityHelper.isDebugMode())
+            Fabric.with(this, new Crashlytics());
+
+        AppUserModel.setMainUser(new AppUserModel().loadUser());
+
+        if(AppUserModel.getMainUser().isLoggedIn())
+        {
+            Crashlytics.setUserName(AppUserModel.getMainUser().getName());
+            Crashlytics.setUserEmail(AppUserModel.getMainUser().getEmail());
+        }
+
         new Handler().postDelayed(new Runnable() {
             @Override
-            public void run() {
-                Intent loginIntent=new Intent(Splash.this,Login.class);
-                startActivity(loginIntent);
-                Splash.this.finish();
+            public void run()
+            {
+                Intent intent = null;
+                if(!AppUserModel.getMainUser().isLoggedIn())
+                    intent = new Intent(Splash.this,Login.class);
+                else
+                {
+                    switch (AppUserModel.getMainUser().getUserType())
+                    {
+                        case Student: intent=new Intent(Splash.this, StudentHome.class);break;
+                        case Admin: intent=new Intent(Splash.this, AdminHome.class);break;
+                        case Teacher: intent=new Intent(Splash.this, TeacherHome.class);break;
+                    }
+                }
+                startActivity(intent);
+                ActivityHelper.setExitAnimation(Splash.this);
+                finish();
             }
-        },getResources().getInteger(R.integer.waitTime));
+        },getResources().getInteger(R.integer.splashTime));
     }
 }
