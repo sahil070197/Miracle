@@ -19,13 +19,6 @@ public class ActionBarNavDrawer
 {
 	private NavigationView navigationView = null;
 	private AppCompatActivity activity;
-	private int ID = -1;
-
-	private void NavigationItemSelected()
-	{
-		int id = ID;
-		ID = -1;
-	}
 
 	public ActionBarNavDrawer(final AppCompatActivity activity)
 	{
@@ -37,14 +30,15 @@ public class ActionBarNavDrawer
 			@Override
 			public boolean onNavigationItemSelected(@NonNull MenuItem item)
 			{
-				ID = item.getItemId();
+				int ID = item.getItemId();
+
+				navigationView.setCheckedItem(0);
 				DrawerLayout drawer = (DrawerLayout) activity.findViewById(R.id.drawer_layout);
 				drawer.closeDrawer(GravityCompat.START);
 				return true;
 			}
 		});
 
-		navigationView.setCheckedItem(0);
 
 		activity.findViewById(R.id.actionbar_navButton).setOnClickListener(new View.OnClickListener()
 		{
@@ -56,17 +50,6 @@ public class ActionBarNavDrawer
 				drawerLayout.openDrawer(GravityCompat.START);
 			}
 		});
-	}
-
-	public boolean onBackPressed()
-	{
-		DrawerLayout drawer = (DrawerLayout) activity.findViewById(R.id.drawer_layout);
-		if (drawer.isDrawerOpen(GravityCompat.START))
-		{
-			drawer.closeDrawer(GravityCompat.START);
-			return true;
-		}
-		return false;
 	}
 
 	public void setLabel(String label)
