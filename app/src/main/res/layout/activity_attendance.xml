@@ -5,10 +5,40 @@
     android:id="@+id/activity_attendance"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/back"
     tools:context="gawds.nitkkr.com.miracle.UI.Activity.AttendancePage">
 
     <include
-        layout="@layout/actionbar_back"
+        layout="@layout/actionbar_back" android:id="@+id/temp"
         android:layout_width="match_parent" android:layout_height="?actionBarSize"/>
+    <LinearLayout
+        android:weightSum="100"
+        android:orientation="vertical" android:layout_below="@id/temp"
+        android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_weight="50"
+            android:weightSum="100" android:orientation="horizontal"
+            android:layout_width="match_parent" android:layout_height="match_parent">
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/Attended"
+                android:layout_weight="50"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/Held"
+                android:layout_margin="10dp"
+                android:layout_weight="50"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <LinearLayout android:layout_margin="10dp" android:layout_weight="50"
+            android:layout_width="match_parent" android:layout_height="match_parent">
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/DayChart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
