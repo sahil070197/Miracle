@@ -11,6 +11,15 @@
     <include
         layout="@layout/actionbar_navdrawer"
         android:layout_width="match_parent" android:layout_height="?actionBarSize"/>
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Choose an option from drawer"
+        android:textSize="30dp"/>
+</RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

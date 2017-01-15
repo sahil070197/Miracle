@@ -9,10 +9,9 @@
     android:layout_height="wrap_content"
     android:text="Student Name"
     android:textSize="25dp"
-    android:id="@+id/name"
+    android:id="@+id/stdname"
     android:gravity="clip_vertical"
-    android:textAlignmet="left"
-    />
+   />
 
     <Switch
         android:layout_width="match_parent"

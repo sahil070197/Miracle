@@ -4,19 +4,19 @@ import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import gawds.nitkkr.com.miracle.Helper.ActionBarNavDrawer;
 import gawds.nitkkr.com.miracle.R;
 
 public class StudentHome extends AppCompatActivity
 {
-
+	TextView TitleBar;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_student_home);
-
 		ActionBarNavDrawer barNavDrawer=new ActionBarNavDrawer(this);
 		barNavDrawer.setLabel(getString(R.string.app_name));
 	}

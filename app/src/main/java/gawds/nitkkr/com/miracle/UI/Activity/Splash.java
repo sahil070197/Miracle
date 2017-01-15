@@ -29,15 +29,12 @@ public class Splash extends AppCompatActivity {
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Crashlytics(), new TwitterCore(authConfig), new Digits.Builder().build());
         setContentView(R.layout.activity_splash);
-
         AppUserModel.setMainUser(new AppUserModel().loadUser());
-
         if(AppUserModel.getMainUser().isLoggedIn())
         {
             Crashlytics.setUserName(AppUserModel.getMainUser().getName());
             Crashlytics.setUserEmail(AppUserModel.getMainUser().getEmail());
         }
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run()

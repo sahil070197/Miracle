@@ -6,7 +6,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import gawds.nitkkr.com.miracle.Helper.FeedAdapter;
+import gawds.nitkkr.com.miracle.Model.FeedAdapter;
 import gawds.nitkkr.com.miracle.R;
 
 public class ViewReviews extends AppCompatActivity {

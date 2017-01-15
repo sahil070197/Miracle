@@ -7,8 +7,15 @@
     <include layout="@layout/actionbar_back"
         android:id="@+id/attendanceBar"
         android:layout_width="match_parent" android:layout_height="?actionBarSize"/>
+    <Spinner
+        android:layout_below="@id/attendanceBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sectionChooser"
+        android:minHeight="30dp"
+        android:entries="@array/Section"></Spinner>
 <ListView
-    android:layout_below="@id/attendanceBar"
+    android:layout_below="@id/sectionChooser"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/attendanceList"></ListView>

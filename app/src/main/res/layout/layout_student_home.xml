@@ -10,6 +10,108 @@
 
     <include
         layout="@layout/actionbar_navdrawer"
+        android:id="@+id/studHome"
         android:layout_width="match_parent" android:layout_height="?actionBarSize"/>
+<RelativeLayout
+    android:layout_marginTop="?actionBarSize"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="6dp"
+    android:padding="6dp"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nextLecture"
+        android:text="Next Lecture:"
+        android:textSize="25dp"
+        />
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/warning"
+       android:layout_below="@id/nextLecture"
+       android:text="You have sufficient attendance!"
+       android:textSize="25dp"
+       />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/warning"
+        android:weightSum="100">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="20">
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Subject: "
+                android:textSize="20dp"
+                android:id="@+id/subject1"
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="20">
 
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Subject: "
+                android:textSize="20dp"
+                android:id="@+id/subject2"
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="20">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Subject: "
+                android:textSize="20dp"
+                android:id="@+id/subject3"
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="20">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Subject: "
+                android:textSize="20dp"
+                android:id="@+id/subject4"
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="20">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Subject: "
+                android:textSize="20dp"
+                android:id="@+id/subject5"
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

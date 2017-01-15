@@ -1,14 +1,18 @@
 package gawds.nitkkr.com.miracle.UI.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import gawds.nitkkr.com.miracle.Helper.ActionBarNavDrawer;
 import gawds.nitkkr.com.miracle.R;
 
-public class AdminHome extends AppCompatActivity
+public class AdminHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
 
 	@Override
@@ -33,5 +37,30 @@ public class AdminHome extends AppCompatActivity
 		{
 			super.onBackPressed();
 		}
+	}
+
+	@Override
+	public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+		if(item.getItemId()==R.id.viewFeedback)
+		{
+			startActivity(new Intent(AdminHome.this,TakeAttendance.class));
+		}
+		if(item.getItemId()==R.id.createEvent)
+		{
+			//call dialog box
+		}
+		if(item.getItemId()==R.id.events)
+		{
+
+		}
+		if(item.getItemId()==R.id.teacherDetails)
+		{
+
+		}
+		if(item.getItemId()==R.id.viewSchedule)
+		{
+
+		}
+		return true;
 	}
 }

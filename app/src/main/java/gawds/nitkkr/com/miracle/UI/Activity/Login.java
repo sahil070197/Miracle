@@ -35,7 +35,6 @@ public class Login extends AppCompatActivity
         findViewById(R.id.SignUp).setOnClickListener(SignUp);
         findViewById(R.id.Login).setOnClickListener(Login);
     }
-
     private View.OnClickListener SignUp = new View.OnClickListener()
     {
         @Override
@@ -100,7 +99,7 @@ public class Login extends AppCompatActivity
                     {
                         case Student: intent=new Intent(Login.this, StudentHome.class);break;
                         case Admin: intent=new Intent(Login.this, AdminHome.class);break;
-                        case Teacher: intent=new Intent(Login.this, TeacherHome.class);break;
+                        case Teacher: intent=new Intent(Login.this, TakeAttendance.class);break;
                     }
                     startActivity(intent);
                     ActivityHelper.setExitAnimation(Login.this);

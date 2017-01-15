@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import gawds.nitkkr.com.miracle.API.FetchData;
 import gawds.nitkkr.com.miracle.API.ResponseCallback;
@@ -18,6 +19,7 @@ public class Notes extends Fragment
 {
 	private SubjectModel model = new SubjectModel();
 	private Context context;
+	ListView notes;
 
 	public static Notes getInstance(Context context, SubjectModel model)
 	{
@@ -32,7 +34,10 @@ public class Notes extends Fragment
 	                         Bundle savedInstanceState)
 	{
 		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.fragment_notes, container, false);
+		View v= inflater.inflate(R.layout.fragment_notes, container, false);
+		notes=(ListView) v.findViewById(R.id.FeedList);
+		return v;
+//		notes.setAdapter();
 	}
 
 	@Override
